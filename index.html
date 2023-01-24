@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Tiled WMS</title>
+    
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
+    
+
+    <style>
+      #legend {
+        margin-left: 100px;
+      }
+      #myDiv {
+        height: 300px;
+        padding: 10px auto;
+      }
+
+      #texteDiv {
+        height: 900px;
+
+        text-align: justify;
+        border: 1px solid black;
+        border-radius: 5px;
+        margin: 90px;
+        padding: 40px;
+      }
+      #texteDiv1 {
+        height: 250px;
+        text-align: justify;
+        border: 1px solid black;
+        border-radius: 5px;
+        margin: 90px;
+        padding: 20px;
+      }
+      .espace {
+        height: 70px;
+      }
+      h1,
+      h3 {
+        margin-left: 90px;
+      }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-2.17.1.min.js"></script>
+    <script type="module" crossorigin src="./assets/main.106cf9cb.js"></script>
+    <link rel="stylesheet" href="./assets/index.8007b919.css">
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Menu</a>
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link active" href="index.html">Accueil</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="espace"></div>
+    <h1>Carte des resultats de mesures de qualité de l'air</h1>
+    <div class="espace"></div>
+    <div class="grille">
+      <div id="map" class="grid-item1"></div>
+      <div class="grid-item" id="myDiv3"></div>
+      <div class="grid-item" id="myDiv5"></div>
+    </div>
+    <img id="legend" />
+
+    <div class="container-fluid">
+      <div class="row">
+        <div id="texteDiv">
+          <h4>Cartographie des résultats de mesures GPS</h4>
+          Sur la carte en haut on peut remarquer que la zone ou l’activité
+          physique a été réalisée au centre-ville est plus susceptible d’être
+          exposée à une qualité d’aire plus riche en polluant. Les hexagones
+          colorés représentant le taux de pollution mesuré par le capteur,
+          tendent beaucoup plus vers le rouge en hyper centre contrairement à
+          ceux présents au parc Jean-Verlac qui sont beaucoup plus clairs.<br />
+          Pour comprendre ce phénomène et pour avoir une vision plus claire sur
+          les paramètres qui influencent la qualité de l’air, des données
+          externes ont été ajoutées, elles sont disponibles en cliquant sur le
+          widget de gestion des couches en haut à droite de la carte ! <br />
+          <h5>Troncons de routes</h5>
+          d’abord nous avons tendance à lier la qualité de l’air presque
+          systématiquement au trafic routier…une bonne manière d’appréhender cet
+          aspect rural est d’analyser les tronçons de routes présents sur nos
+          deux zones. Les routes sont représentées en jaunes avec une épaisseur
+          variant selon la taille réelle de la route et donc selon l’importance
+          de cette dernière.<br />
+          On remarque cela dit que les hexagones plus rouges ne s’expliquent pas
+          directement par des tronçons de routes plus larges, mais reflète tout
+          de même une différence en ce qui concerne les deux zones, où les
+          tronçons présents majoritairement au parc Jean-Verlac sont beaucoup
+          plus étroits, ce qui se traduit par un trafic routier beaucoup moins
+          dense et donc des émissions de polluants beaucoup moins importante.<br />
+          <h5>Les batiments</h5>
+          Ouvrir les fentes est un réflexe que l’on a tous quand on veut obtenir
+          une qualité d’aire meilleur chez-soi, ce phénomène peut être transposé
+          à l’échelle de la ville en considérant les bâtiments comme étant des
+          éléments bloquant la circulation des courants d’airs permettant
+          d’évacuant les polluants. On remarque pour notre cas que deux aspects
+          peuvent exercer une influence sur la qualité de l’air :
+          <ul>
+            <li>1-La hauteur des bâtiments :</li>
+            la hauteur des bâtiments a été représentée avec une échelle de
+            dégradé de couleurs en bleu. On remarque que les bâtiments du
+            centre-ville ne varient pas trop en matière de hauteur, mais sont
+            tout de même relativement élevés favorisant une rétention de masses
+            d’air.
+            <li>2-La densité due battit :</li>
+            il est clairement remarquable qu’au parc Jean-Verlac, le nombre de
+            bâtiments ait beaucoup plus faible, ainsi la circulation de l’air y
+            est beaucoup plus favorisée au point ou les couloirs de courants
+            d’air sont bien visibles.
+          </ul>
+          <h5>Les zones végétalisées</h5>
+          Autre phénomène auquel nous avons tendance à relier la qualité de
+          l’air…les végétaux ! les espaces verts sont synonymes d'air frais et
+          pur et c’est vrai ! les végétaux consomment le C02 ambiants et
+          génèrent de l’O2 et ils aspirent également une partie des polluants,
+          ce qui fait d’eux des agents favorisant une bonne qualité d’air.
+          <br />
+          Et en effet cela se voit sur la carte, un quadrillage de 100m
+          permettant de voir la densité de végétalisation dans les deux zones
+          est représenté par une couche de dégradé de couleur verte, ainsi que
+          des zones d'espace vert. La densité est clairement plus importante au
+          parc qu’a l’hypercentre, ce qui explique en partie des valeurs de
+          pollution plus faibles !
+        </div>
+      </div>
+    </div>
+    <h1>Analyse statistqique</h1>
+    <div id="texteDiv1">
+      Pour aller au-delà de l’aspect cartographique, l’analyse statistique
+      montre la différence de mesure de qualité d’air entre les deux endroits.
+      Trois paramètres ont été fait varier afin de percevoir ceux qui peuvent
+      influencer la qualité d’air à un endroit :
+      <ul>
+        <li>1- La période de la journée.</li>
+        <li>2- Le lieu.</li>
+        <li>3- La météo.</li>
+      </ul>
+      On peut voir au premier abord que le box-plot réalisé sur l’ensemble des
+      données, que les valeurs sont distribuées d’une manière différente. Il est
+      clairement perceptible qu’une exposition Aux polluants a été beaucoup plus
+      remarquable au centre-ville qu’au parc Jean-Verlac où les valeurs tendent
+      à être plus faibles.
+    </div>
+    <div class="container">
+      <div id="myDiv2"></div>
+    </div>
+    <div class="container-fluid">
+      <div class="grille">
+        <div class="grid-item2" id="myDiv1"></div>
+        <div class="grid-item">
+          Les deux graphes "trajet et au centre-ville" et "trajet au parc"
+          montrent les tendances de la qualité de l'air en fonction de
+          l'emplacement. On peut voir que les courbes du centre-ville présentent
+          des niveaux de polluants plus élevés et une tendance générale plus
+          élevée que celles du parc. Cela s'explique par le fait que les zones
+          densément peuplées et les zones à fort trafic automobile sont
+          généralement les plus touchées par la pollution de l'air. En outre,
+          l'analyse des courbes de qualité de l'air du centre-ville et du parc,
+          il est possible de remarquer des différences importantes en fonction
+          des heures de la journée. La pollution de l'air est généralement plus
+          élevée pendant les heures de pointe du soir et de fin d'après-midi,
+          lorsque le trafic est le plus dense.
+        </div>
+        <div class="grid-item2" id="myDiv"></div>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/elm-pep@1.0.6/dist/elm-pep.js"></script>
+    
+    
+  </body>
+</html>
