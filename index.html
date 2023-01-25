@@ -15,7 +15,6 @@
       http-equiv="Content-Security-Policy"
       content="upgrade-insecure-requests"
     />
-
     <style>
       #legend {
         margin-left: 100px;
@@ -27,7 +26,6 @@
 
       #texteDiv {
         height: 900px;
-
         text-align: justify;
         border: 1px solid black;
         border-radius: 5px;
@@ -35,19 +33,37 @@
         padding: 40px;
       }
       #texteDiv1 {
-        height: 250px;
+        height: 600px;
         text-align: justify;
         border: 1px solid black;
         border-radius: 5px;
-        margin: 90px;
-        padding: 20px;
+        margin: 90px auto;
+        padding: 40px;
+      }
+      #texteDiv2 {
+        height: 700px;
+        text-align: justify;
+        border: 1px solid black;
+        border-radius: 5px;
+        margin: 90px auto;
+        padding: 40px;
       }
       .espace {
         height: 70px;
       }
-      h1,
+      .espace2 {
+        height: 30px;
+      }
+
       h3 {
         margin-left: 90px;
+      }
+      h1 {
+        text-align: center;
+      }
+
+      .icon img {
+        transform: scale(0.5);
       }
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
@@ -69,8 +85,50 @@
       </div>
     </nav>
     <div class="espace"></div>
-    <h1>Carte des resultats de mesures de qualité de l'air</h1>
+    <h1>Travail mobilité</h1>
+    <div class="container-fluid" id="texteDiv1">
+      <div>
+        <h2>Presentation</h2>
+        La pratique sportive est bénéfique pour la santé, mais lorsque celle-ci
+        se déroule dans des conditions de mauvaise qualité de l'air, cela peut
+        devenir risqué. Le running est un sport très pratiqué en France, mais
+        les coureurs sont particulièrement exposés à la pollution de l'air en
+        raison de leur respiration accrue. Il est donc important de prendre des
+        précautions pour concilier running et qualité de l'air afin de profiter
+        au mieux des bénéfices de la pratique sportive. Pour cette étude, nous
+        allons nous concentrer sur le choix du lieu de l'activité physique, en
+        comparant l'exposition à la pollution dans un lieu densément peuplé
+        (l'hyper-centre) et dans un parc (le parc Jean Verlac).
+      </div>
+      <h2>Protcole</h2>
+      <div>
+        <h4>Collecte de données:</h4>
+        <br />
+        avons utilisé un capteur air-bim pour collecter des données en
+        effectuant 6 trajets de running dans les deux endroits précités
+        (l'hyper-centre et le parc Jean Verlac). Pour varier certains paramètres
+        tels que la météo ou la période d'exécution du trajet, nous avons créé
+        un tableur excel pour noter et stocker les données variées. <br />
+        <h4>Traitement de données:</h4>
+        <br />
+        Pour afficher les données pertinentes sur la carte, nous avons dû
+        traiter les données brutes. Le premier travail a été un travail
+        d'agrégation, car les données sont collectées toutes les dixièmes de
+        seconde et sont donc de ce fait inutilisables. Nous avons donc agrégé
+        les données à la minute pour mieux les exploiter. La moyenne de chaque
+        paramètre (mesure de l'air, humidité et température) a été calculée à
+        chaque agrégation.<br />
+        <h4>Stockage et affichage:</h4>
+        <br />
+        Les données ont été stockées dans une base de données PostgreSQL, qui
+        alimente un serveur cartographique "GeoServer" qui envoie les données à
+        la carte instantanément. La carte est une instance d'Open Layer, une
+        librairie Javascript.
+      </div>
+    </div>
+    <h1>Resultats</h1>
     <div class="espace"></div>
+    <h3>Carte des resultats de mesures de qualité de l'air</h3>
     <div class="grille">
       <div id="map" class="grid-item1"></div>
       <div class="grid-item" id="myDiv3"></div>
@@ -78,7 +136,7 @@
     </div>
     <img id="legend" />
 
-    <div class="container-fluid">
+    <div id="textDiv1" class="container-fluid">
       <div class="row">
         <div id="texteDiv">
           <h4>Cartographie des résultats de mesures GPS</h4>
@@ -142,7 +200,7 @@
       </div>
     </div>
     <h1>Analyse statistqique</h1>
-    <div id="texteDiv1">
+    <div id="texteDiv2">
       Pour aller au-delà de l’aspect cartographique, l’analyse statistique
       montre la différence de mesure de qualité d’air entre les deux endroits.
       Trois paramètres ont été fait varier afin de percevoir ceux qui peuvent
@@ -157,26 +215,28 @@
       clairement perceptible qu’une exposition Aux polluants a été beaucoup plus
       remarquable au centre-ville qu’au parc Jean-Verlac où les valeurs tendent
       à être plus faibles.
-    </div>
-    <div class="container">
       <div id="myDiv2"></div>
     </div>
+    <div class="container"></div>
     <div class="container-fluid">
       <div class="grille">
         <div class="grid-item2" id="myDiv1"></div>
         <div class="grid-item">
-          Les deux graphes "trajet et au centre-ville" et "trajet au parc"
-          montrent les tendances de la qualité de l'air en fonction de
-          l'emplacement. On peut voir que les courbes du centre-ville présentent
-          des niveaux de polluants plus élevés et une tendance générale plus
-          élevée que celles du parc. Cela s'explique par le fait que les zones
-          densément peuplées et les zones à fort trafic automobile sont
-          généralement les plus touchées par la pollution de l'air. En outre,
-          l'analyse des courbes de qualité de l'air du centre-ville et du parc,
-          il est possible de remarquer des différences importantes en fonction
-          des heures de la journée. La pollution de l'air est généralement plus
-          élevée pendant les heures de pointe du soir et de fin d'après-midi,
-          lorsque le trafic est le plus dense.
+          <div class="espace2">
+            Les deux graphes "trajet et au centre-ville" et "trajet au parc"
+            montrent les tendances de la qualité de l'air en fonction de
+            l'emplacement. On peut voir que les courbes du centre-ville
+            présentent des niveaux de polluants plus élevés et une tendance
+            générale plus élevée que celles du parc. Cela s'explique par le fait
+            que les zones densément peuplées et les zones à fort trafic
+            automobile sont généralement les plus touchées par la pollution de
+            l'air. En outre, l'analyse des courbes de qualité de l'air du
+            centre-ville et du parc, il est possible de remarquer des
+            différences importantes en fonction des heures de la journée. La
+            pollution de l'air est généralement plus élevée pendant les heures
+            de pointe du soir et de fin d'après-midi, lorsque le trafic est le
+            plus dense.
+          </div>
         </div>
         <div class="grid-item2" id="myDiv"></div>
       </div>
